@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</activeVersionIdentifier>
+    <developerName>IncomeTax_Service_Agent</developerName>
+    <masterLabel>IncomeTax-Service Agent</masterLabel>
+    <templateVersions>
+        <content>QUERY-FOCUSED INCOME TAX ANALYSIS PROMPT
+PRIMARY QUERY FOCUS
+Analyze and respond to the customer&apos;s specific tax query: {!$Input:Input_text}
+DATA SOURCES
+Customer Profile: {!$RecordSnapshot:Account.Snapshot}
+RecFiling History: {!$RelatedList:Account.Filings__r.Records}
+RelateInvestment Details: {!$RelatedList:Account.Investments__r.Records}
+Deduction Claims: {!$RelatedList:Account.Deductions__r.Records}
+Categorize the customer query {!$Input:Input_text} 
+into one of the following:
+Income Tax Act References: {!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results}
+anning inquiry
+Compliance concern
+Residential status inquiry
+Investment-related tax query
+Investment-related tax query
+International taxation question
+Tax notice or demand related
+Other specialized tax matter
+evious filing information relevant to thExtract only the customer profile elements from account that directly address the customer&apos;s quAge, gender, and nationality if relevant to query-specific deductions or schemes
+s that clarify the interpretation
+Income details pertinent to the specific question
+t amendments that might affect the answer
+StSpecific investments or assets mentioned in the query
+Previous filing information relevant to the current question
+Step 3: Determine Applicable Tax Provisions
+Identify specific Income Tax Act sections, rules, and circulars from {!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results} law applies to the customer&apos;s specific situation
+IncluStatutory provisions that govern the subject matter
+stomer-Specific Considerations
+Reference relevant detailsCBDT circulars that clarify the interpretation
+ answer
+Acknowledge how age, gender, or natioRecent amendments that might affect the answer
+)
+Address how residential status impacts theReview {!$RelatedList:Account.Filings__r.Records} reductions
+4. IPrevious treatment of similar matters in prior filings
+ementing the answer
+Specify documentationChanges in the customer&apos;s circumstances that affect the current query
+Consistency or inconsistency with past advice provided
+Historical compliance patterns relevant to the query
+omer should be awar1. Query Restatement and Understanding
+Restate the customer&apos;s query in clear tax terminology
+rements connected to the answer
+6. Concluding Summary
+RecapitulaAcknowledge key customer circumstances relevant to the query
+the advice
+Offer clear next steps if applicable
+RESPONSE REQUIREMENTS
+Maintain laser focusCite relevant Income Tax Act sections, rules, or notifications
+ all advice in specific Income Tax Act provisions, rules, or notiInclude applicable tax rates, limits, or thresholds
+3. Customer-Specific Considerations
+Reference relevant details from the customer&apos;s profile that influence the answer
+actors that influence the answer
+Maintain consistency with previous advice where appliAddress how residential status impacts the matter (if relevant)
+Highlight how the answer connects to their specific investments or deductions
+4. Implementation Guidance
+Provide practical steps for implementing the answer
+Specify documentation requirements
+Outline procedural steps if applicable
+des legally sound tax guidance
+Balances technical accuracy with practIdentify 1-2 closely related tax considerations the customer should be aware of
+Note potential impacts on other aspects of their tax situation
+Flag any compliance requirements connected to the answer
+6. Concluding Summary
+Recapitulate the key points of the answer
+Reinforce the legal basis of the advice
+Offer clear next steps if applicable
+Ground all advice in specific Income Tax Act provisions, rules, or notifications
+Highlight customer-specific factors that influence the answer
+Maintain consistency with previous advice where applicable
+Flag any compliance risks specific to the answer provided
+Provide actionable guidance the customer can implement
+Directly answers what the customer asked
+Demonstrates understanding of their unique tax situation
+Provides legally sound tax guidance
+Balances technical accuracy with practical applicability
+Maintains professional tax advisory language and tone
+</content>
+        <inputs>
+            <apiName>Input_text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Input text</masterLabel>
+            <referenceName>Input:Input_text</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Filings__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Filings__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getDataForGrounding</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>recordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>RecordSnapshot:Account</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Deductions__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Deductions__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_Income_Tax_1Cx_rdd8bf4c5bb</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input_text}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://List&lt;String&gt;</definition>
+                <isRequired>false</isRequired>
+                <parameterName>outputFieldNames</parameterName>
+                <valueExpression>[&quot;Chunk&quot;]</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Investments__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Investments__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

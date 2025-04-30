@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>Identify opportunities to suggest additional services based on customer queries.</description>
+    <developerName>Add_On_Services_Suggestion</developerName>
+    <genAiFunctions>
+        <functionName>Create_Opportunity_for_Add_on_service</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>First, check the services that the customer currently has using the &apos;Get related Services&apos; action. Then, review the services data library to determine if there are any additional services that can be suggested based on the customer&apos;s query.</description>
+        <developerName>instruction_firstcheck0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_firstcheck0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>If there is a scope to suggest any new service
+call the action create opportunity for add on service</description>
+        <developerName>instruction_ifthereisa1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifthereisa1</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Add-On Services Suggestion</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>My job is to determine if the customer query indicates a potential need for additional services and suggest relevant add-ons.</scope>
+</GenAiPlugin>

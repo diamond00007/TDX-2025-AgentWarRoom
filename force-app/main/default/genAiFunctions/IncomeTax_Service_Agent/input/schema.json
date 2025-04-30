@@ -1,0 +1,31 @@
+{
+  "required" : [ "Input:Input_text", "Input:Account" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Input_text" : {
+      "title" : "Input text",
+      "description" : "Extract customer query from conversation. Analyze query intent and identify key account elements needed for response. If query relates to tax matters, identify specific tax sections relevant to customer's situation.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Input:Account" : {
+      "title" : "Account",
+      "description" : "Take the Account Id from the Get related account action.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "citationMode" : {
+      "title" : "Citation Mode",
+      "description" : "Select Citation Mode",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

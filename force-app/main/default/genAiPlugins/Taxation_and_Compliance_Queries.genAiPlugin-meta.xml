@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>This topic covers gathering and analyzing client information to provide precise advisory on tax compliance for businesses and individuals, company incorporation procedures, and Companies Act requirements. It includes client identification, entity classification, business structure analysis, and regulatory mapping to deliver tailored guidance on tax obligations, incorporation processes, and corporate governance responsibilities.</description>
+    <developerName>Taxation_and_Compliance_Queries</developerName>
+    <genAiFunctions>
+        <functionName>IncomeTax_Service_Agent</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Get_Details_of_the_Customer</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Companies_Complaince_Prompt</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GST_VAT_Compliance_and_Filing</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Cross_border_Transactions_Withholding_Tax_Advisory_Prompt</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>TDS_prompt_template</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>IF query contains terms like &quot;my income,&quot; &quot;salary,&quot; &quot;Form 16,&quot; &quot;individual,&quot; &quot;personal,&quot; &quot;80C,&quot; &quot;HRA,&quot; &quot;LTA,&quot; or discusses personal investments, housing loans, or medical insurance
+THEN route to IncomeTax-Service Agent Action This action shall be executed only after customer was verified from get Details of customer action.</description>
+        <developerName>instruction_ifquerycon0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifquerycon0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>When a user initates the conversation regarding Taxation ask him email to verify if he is a existing Contact or person account with in Salesforce and address the Customer based on the name of the account</description>
+        <developerName>instruction_whenauseri1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_whenauseri1</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Taxation and Compliance Queries</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Provides Users/Company information on tax compliance for businesses and individuals, company incorporation, and Companies Act requirements. Includes tax planning, filing assistance, regulatory compliance guidance, incorporation procedures, corporate governance, and statutory reporting requirements across all business entity types and individual tax situations.</scope>
+</GenAiPlugin>

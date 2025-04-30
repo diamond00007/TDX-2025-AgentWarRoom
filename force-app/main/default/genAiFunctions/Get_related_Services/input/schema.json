@@ -1,0 +1,14 @@
+{
+  "required" : [ "caseId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "caseId" : {
+      "title" : "caseId",
+      "description" : "Extract the Case ID from the incoming customer query or form input. Ensure the Case ID is accurately identified",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

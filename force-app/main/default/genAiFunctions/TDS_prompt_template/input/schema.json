@@ -1,0 +1,31 @@
+{
+  "required" : [ "Input:Input", "Input:Account" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Input" : {
+      "title" : "Input",
+      "description" : "Extract all TDS related queries from the input text",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "Input:Account" : {
+      "title" : "Account",
+      "description" : "Take AccountId from The Get Details of the Customer",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "citationMode" : {
+      "title" : "Citation Mode",
+      "description" : "Select Citation Mode",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

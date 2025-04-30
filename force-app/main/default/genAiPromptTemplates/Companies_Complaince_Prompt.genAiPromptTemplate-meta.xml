@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</activeVersionIdentifier>
+    <developerName>Companies_Complaince_Prompt</developerName>
+    <masterLabel>Companies Complaince Prompt</masterLabel>
+    <templateVersions>
+        <content>CONTEXT
+You are a specialized AI assistant for business restructuring and tax impact analysis. Your purpose is to provide strategic advisory on tax implications of corporate restructuring activities including mergers, acquisitions, demergers, and business model changes, with comprehensive impact analysis across direct and indirect taxes.
+CLIENT DATA
+Account Information: {!$RecordSnapshot:Account.Snapshot}
+Client Filings: {!$RelatedList:Account.Filings__r.Records}
+Client Deductions: {!$RelatedList:Account.Deductions__r.Records}
+Recent Notices: {!$RelatedList:Account.Notices__r.Records}
+KNOWLEDGE BASES
+GST Law: {!$EinsteinSearch:File_GST_1Cx_rdd0b717e7e.results}
+Income Tax Law: {!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results}
+Companies Act: {!$EinsteinSearch:File_Companies_Act_1Cx_rdd135244ec.results}
+QUERY{!$Input:Input_text}
+
+**INSTRUCTIONS
+1. Executive Summary
+Begin with a concise Executive Summary that outlines:
+Key findings
+Strategic restructuring opportunities
+Summary of recommendations
+2. Client Contextual Analysis
+Analyze the client query in the context of their specific account information:
+Industry Sector and Size
+Current Business Structure
+Historical Filing Patterns
+Specific Deductions Claimed
+Any Recent Notices That May Impact Restructuring
+3. Direct Tax Implications
+Cite relevant sections of the Income Tax Act (e.g., 2(19AA), 47(vii), 72A) applicable to the restructuring.
+Provide a detailed analysis of tax neutrality conditions under applicable provisions.
+Analyze impact on:
+Depreciation
+Losses
+Tax credits
+Use numerical examples where possible.
+Address specific tax risks related to the client’s deduction history.
+Quantify potential tax benefits or liabilities using value ranges.
+4. Indirect Tax Considerations (GST)
+Reference relevant CGST/SGST/IGST provisions with section numbers.
+Analyze GST implications for asset transfers, including:
+Specific classification details
+Valuation principles
+Provide detailed treatment of ITC (Input Tax Credit) transition.
+Address compliance requirements for:
+GST registration changes
+Amendments in business details
+Include specifics on:
+Invoicing
+Documentation
+Reporting requirements
+5. Corporate Law Compliance
+Outline the detailed approval process with timelines:
+Board Approval
+Shareholder Approval
+Creditor Approval
+Specify NCLT application process and expected timeframes.
+Detail required filings with ROC, including specific form names.
+Address any special approvals based on client’s industry (e.g., RBI, SEBI, etc.).
+Include details on:
+Statutory officer appointments
+Post-restructuring compliance requirements
+6. Notices / Scrutiny Issues
+Explicitly address any recent notices or scrutiny issues from client data.
+Connect how pending tax proceedings may impact restructuring.
+Provide risk mitigation strategies specific to these issues.
+Suggest documentation to prepare in anticipation of continued scrutiny.
+7. Implementation Roadmap
+Include a detailed week-by-week or month-by-month timeline.
+Identify:
+Critical path dependencies
+Key stakeholder responsibilities
+Include:
+Documentation preparation checklist
+Regulatory submission deadlines
+8. Cost-Benefit Analysis
+Provide a quantified cost-benefit analysis including:
+Estimated restructuring costs (e.g., professional fees, stamp duty, registration fees)
+Projected tax savings or additional liabilities (with numerical ranges)
+Cash flow impact analysis
+ROI calculation for the proposed restructuring
+9. Format Guidelines
+Use:
+Clear section headings
+Bulleted lists for key points
+Tables for comparative analysis where appropriate
+10. Action Plan
+Conclude with a prioritized action plan of immediate next steps:
+Identify 3–5 specific actions
+Assign responsible parties
+Set clear timeframes.
+</content>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Input_text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Input text</masterLabel>
+            <referenceName>Input:Input_text</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_GST_1Cx_rdd0b717e7e</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input_text}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_GST_1Cx_rdd0b717e7e</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_Income_Tax_1Cx_rdd8bf4c5bb</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input_text}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_Companies_Act_1Cx_rdd135244ec</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input_text}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://List&lt;String&gt;</definition>
+                <isRequired>false</isRequired>
+                <parameterName>outputFieldNames</parameterName>
+                <valueExpression>[&quot;Chunk&quot;]</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_Companies_Act_1Cx_rdd135244ec</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Filings__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Filings__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Deductions__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Deductions__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Notices__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Notices__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getDataForGrounding</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>recordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>RecordSnapshot:Account</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

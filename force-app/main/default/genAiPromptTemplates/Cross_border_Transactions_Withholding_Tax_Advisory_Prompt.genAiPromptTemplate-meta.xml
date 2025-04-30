@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</activeVersionIdentifier>
+    <description>Specialized guidance on international payment structures, treaty benefits, withholding tax optimization, and compliance requirements for cross-border business activities to minimize tax leakage and avoid double taxation.</description>
+    <developerName>Cross_border_Transactions_Withholding_Tax_Advisory_Prompt</developerName>
+    <masterLabel>Cross-border Transactions &amp; Withholding Tax Advisory Prompt</masterLabel>
+    <templateVersions>
+        <content>{!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results}
+Primary Query Focus:
+ Respond to the customer&apos;s query regarding international transactions or TDS under Section 195: {!$Input:Input_text}
+Data Sources:
+Customer Profile &amp; Residency Status: {!$RecordSnapshot:Account.Snapshot}
+Past Withholding Payments or Filings:{!$RelatedList:Account.Filings__r.Records}{!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results}
+Steps:
+Identify nature of cross-border transaction (royalty, technical service, dividend, import of services)
+Determine applicable withholding tax rates and DTAA impact
+Refer to Section 195, Rule 37BB (Form 15CA/15CB), or relevant DTAA clauses
+Flag whether remittance requires CA certificate or TDS return
+Advise on PAN/Aadhaar/PE requirements (if applicable)
+Clarify FEMA and RBI regulations tied to the transaction
+Provide a compliance checklist and procedural steps for remittance
+
+</content>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Input_Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Input Text</masterLabel>
+            <referenceName>Input:Input_Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_Income_Tax_1Cx_rdd8bf4c5bb</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input_Text}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Filings__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Filings__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getDataForGrounding</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>recordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>RecordSnapshot:Account</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

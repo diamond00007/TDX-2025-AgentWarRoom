@@ -1,0 +1,14 @@
+{
+  "required" : [ "Input_email" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input_email" : {
+      "title" : "Input_email",
+      "description" : "Extract all valid email addresses from the current conversation text. Return the most recent email address found, or 'No email address detected' if none exists. Ignore example formats and system text.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

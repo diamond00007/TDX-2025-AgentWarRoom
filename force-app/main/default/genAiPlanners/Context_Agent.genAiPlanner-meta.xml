@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlanner xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>The Context Agent serves as the foundational intelligence layer for customer interactions, responsible for identifying customers, retrieving their complete profile information, and establishing the appropriate contextual framework for all subsequent agent interactions. This agent analyzes customer identity, retrieves historical data, and synthesizes relevant business attributes to ensure all responses are properly tailored to the customer&apos;s specific situation, industry requirements, and compliance needs.</description>
+    <genAiFunctions>
+        <genAiFunctionName>EmployeeCopilot__AnswerQuestionsWithKnowledge</genAiFunctionName>
+    </genAiFunctions>
+    <genAiPlugins>
+        <genAiPluginName>Tax_Compliance_Advisory</genAiPluginName>
+    </genAiPlugins>
+    <masterLabel>Context Agent</masterLabel>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlanner>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Personalized tax planning and filing services for individuals, covering income assessment, deduction optimization, investment planning, tax-saving strategies, and preparation of income tax returns with maximum legitimate benefits.</description>
+    <developerName>Personal_Income_Tax_Advisory_Prompt</developerName>
+    <masterLabel>Personal Income Tax Advisory Prompt</masterLabel>
+    <templateVersions>
+        <content>Primary Query Focus:
+ Analyze and respond to the customer&apos;s personal income tax query: {!$Input:Input}
+Data Sources:
+Customer Profile: {!$RecordSnapshot:Account.Snapshot}{!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results}
+Income &amp; Salary Details: {!$RelatedList:Account.Incomes__r.Records}
+Deduction Claims: {!$RelatedList:Account.Deductions__r.Records}
+Filing History: {!$RelatedList:Account.Filings__r.Records}
+Steps:
+Categorize the query (e.g., section 80C deduction, capital gains, residential status, new tax regime, etc.)
+Extract relevant profile elements (age, residency, employment type, income sources)
+Determine applicable Income Tax Act provisions
+Provide customer-specific interpretation and optimization tips{!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results}
+Outline any required forms, documents, or next steps
+Flag compliance risks or filing inconsistencies
+Summarize with actionable, personalized advice grounded in tax law
+
+</content>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Input</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Input</masterLabel>
+            <referenceName>Input:Input</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_Income_Tax_1Cx_rdd8bf4c5bb</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Incomes__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Incomes__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Deductions__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Deductions__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Filings__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Filings__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getDataForGrounding</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>recordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>RecordSnapshot:Account</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

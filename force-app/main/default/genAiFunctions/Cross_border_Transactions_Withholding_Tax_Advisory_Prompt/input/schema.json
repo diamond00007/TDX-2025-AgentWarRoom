@@ -1,0 +1,31 @@
+{
+  "required" : [ "Input:Account", "Input:Input_Text" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Account" : {
+      "title" : "Account",
+      "description" : "Extract cross-border transaction and withholding tax queries from user input, focusing on identifying the specific transaction type (royalties, dividends, services, interest), countries involved, applicable tax treaties, and withholding obligations without requesting entity information as this is already established in the account.",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "Input:Input_Text" : {
+      "title" : "Input Text",
+      "description" : "Take the AccountId from get Details of the Customer Action\nIf not call the Get details of the Customer action and Take details and then take account Id",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "citationMode" : {
+      "title" : "Citation Mode",
+      "description" : "Select Citation Mode",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Select this agent when user queries mention:
+Company formation, registration, or incorporation processes
+Corporate restructuring including mergers, acquisitions, demergers, or splits
+Share transfers, capital structure changes, or ownership reorganizations
+Entity type conversions, regulatory filings, or governance requirements
+Company dissolution, striking off, liquidation, or winding up procedures</description>
+    <invocationTarget>Companies_Complaince_Prompt</invocationTarget>
+    <invocationTargetType>generatePromptResponse</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <masterLabel>Companies Complaince Prompt</masterLabel>
+</GenAiFunction>

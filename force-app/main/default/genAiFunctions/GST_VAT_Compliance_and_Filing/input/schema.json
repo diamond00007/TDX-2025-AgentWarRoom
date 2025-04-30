@@ -1,0 +1,31 @@
+{
+  "required" : [ "Input:input_Text", "Input:Account" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:input_Text" : {
+      "title" : "input Text",
+      "description" : "Extract GST-related questions from user input, focusing on identifying the specific tax query (registration, filing, rates, credits, compliance) without requesting country information as Indian GST context is already established in the account.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "Input:Account" : {
+      "title" : "Account",
+      "description" : "Take the Account Id generated from the Get Customer details action",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "citationMode" : {
+      "title" : "Citation Mode",
+      "description" : "Select Citation Mode",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

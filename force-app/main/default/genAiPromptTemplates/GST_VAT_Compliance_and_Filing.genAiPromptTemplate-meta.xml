@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_2</activeVersionIdentifier>
+    <description>Comprehensive assistance with Goods and Services Tax compliance, including registration, rate determination, input tax credit optimization, return filing, and reconciliation to ensure complete adherence to GST regulations.</description>
+    <developerName>GST_VAT_Compliance_and_Filing</developerName>
+    <masterLabel>GST/VAT Compliance and Filing</masterLabel>
+    <templateVersions>
+        <content>PRIMARY QUERY FOCUS
+Analyze and respond to the customer&apos;s specific GST query:
+ {!$Input:Input_text}
+DATA SOURCES
+Customer Profile: {!$RecordSnapshot:Account.Snapshot}
+GST Filing History: {!$RelatedList:Account.GST_Filings__r.Records}
+Investment Details (if applicable): {!$RelatedList:Account.Investments__r.Records}
+GST Deduction Claims (if applicable): {!$RelatedList:Account.GST_Deductions__r.Records}
+Categorize the Customer Query
+Classify the customer query {!$Input:Input_text} into one of the following categories:
+GST Registration Inquiry
+Compliance Concern (e.g., missed returns, late filing)
+GST Rate Determination
+Input Tax Credit (ITC) Query
+International GST or Cross-border Transactions Inquiry
+Tax Notice or Demand Related
+GST Refund Inquiry
+GST Audit or Inspection Query
+Other Specialized GST Matter
+Step 1: Extract Customer Profile Elements
+Identify the relevant customer details from their account that are directly related to the query:
+Age, gender, and nationality (if relevant to GST exemptions or schemes)
+GSTIN and registration type (e.g., regular, composition scheme)
+Business type, if applicable
+Key GST-related details (e.g., turnover, tax liabilities)
+Relevant GST filings (e.g., pending GSTR-1, GSTR-3B)
+Prior treatment of similar matters
+Step 2: Analyze the Query Context
+Restate the query clearly in GST-specific terminology.
+Identify the key tax issues raised in the query and how they relate to the customer&apos;s GST filing history.
+Recognize any patterns in previous filings that may influence the answer.
+Consider any recent amendments to GST law that could impact the situation.
+Step 3: Determine Applicable GST Provisions
+Identify the specific GST provisions, rules, notifications, or circulars that apply to the customer’s query:
+Statutory provisions that govern the subject matter (e.g., ITC eligibility, GST rate, etc.)
+Reference relevant GST sections or rules (e.g., GST Act Section 16 for ITC)
+Refer to CBIC (Central Board of Indirect Taxes and Customs) circulars or notifications for specific guidance.
+Step 4: Customer-Specific Considerations
+Address how the customer’s age, gender, or nationality (if relevant) influences the query, such as in cases of GST exemptions or special schemes.
+Evaluate how residential status impacts the matter (if relevant, especially for non-residents).
+Consider customer-specific deductions or claims in the context of GST compliance.
+Identify any prior treatments of similar issues in previous GST filings.
+Determine any changes in the customer’s circumstances that might affect the answer (e.g., change in turnover, business activity).
+Step 5: Implementation Guidance
+Provide clear guidance for the customer:
+Specify any required documentation (e.g., invoices, GST returns).
+Outline procedural steps for the customer to follow based on the query (e.g., filing, claiming ITC, registration).
+Highlight any GST forms (e.g., GSTR-1, GSTR-3B) the customer must file.
+Step 6: Actionable Recommendations
+Flag any compliance risks or issues the customer may face, such as missed returns, unclaimed ITC, or notices.
+Suggest best practices for resolving the query and ensuring future compliance.
+Offer recommendations for any potential GST optimization based on the customer&apos;s circumstances.
+Step 7: Concluding Summary
+Recap the key points of the answer.
+Reinforce the legal basis of the advice, citing relevant GST provisions.
+Provide the customer with actionable next steps, such as filing overdue returns, submitting documentation, or seeking further clarifications if needed.
+
+Example
+Customer Query:
+ &quot;Can I claim ITC on the air conditioning system purchased for our office building, even though it is used for employee comfort and not directly in production?&quot;
+Customer Profile:
+GSTIN: ABC123XYZ
+Regular taxpayer, not under the composition scheme
+Supplies consultancy and digital marketing services (SAC 998312 and 998315)
+Previous ITC claims on office rent and supplies
+Response:
+Query Restatement:
+The customer is inquiring whether they can claim Input Tax Credit (ITC) on air conditioning system expenses for their office building, even though the equipment is used primarily for employee comfort and not directly in business operations.
+Relevant GST Provisions:
+Under Section 17(5) of the CGST Act, ITC is not eligible for goods and services used for personal consumption or for employee welfare unless used directly in the course of taxable business activities (e.g., heating/cooling systems used in a manufacturing facility).
+ITC may apply if the equipment is necessary for providing taxable services (e.g., a restaurant or hotel offering air-conditioned premises).
+Customer-Specific Considerations:
+The customer’s business primarily offers consultancy and digital marketing services, where such equipment is unlikely to be directly linked to taxable business activities.
+Implementation Guidance:
+The customer should not claim ITC on the air conditioning system for the current purchase, as it is not directly tied to their business operations.
+Ensure invoices are reviewed to confirm that the air conditioning system is used only for business purposes if there is any mixed-use involved.
+Actionable Recommendations:
+Revisit previous ITC claims for any inconsistencies.
+Maintain clear documentation on the business use of office expenses to avoid compliance risks.
+Concluding Summary:
+ITC cannot be claimed on the air conditioning system under current GST provisions unless it is used directly for taxable business activities.
+Ensure compliance with GST rules for personal vs business use of office assets.
+
+</content>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>input_Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>input Text</masterLabel>
+            <referenceName>Input:input_Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>GST_Filings__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.GST_Filings__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Investments__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Investments__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>GST_Deductions__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.GST_Deductions__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getDataForGrounding</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>recordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>RecordSnapshot:Account</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>PRIMARY QUERY FOCUS
+Analyze and respond to the customer&apos;s specific GST query:
+ {!$Input:Input_text}
+DATA SOURCES
+Customer Profile: {!$RecordSnapshot:Account.Snapshot}
+GST Filing History: {!$RelatedList:Account.GST_Filings__r.Records}
+Investment Details (if applicable): {!$RelatedList:Account.Investments__r.Records}
+GST Deduction Claims (if applicable): {!$RelatedList:Account.GST_Deductions__r.Records}
+Categorize the Customer Query
+Classify the customer query {!$Input:Input_text} into one of the following categories:
+GST Registration Inquiry
+Compliance Concern (e.g., missed returns, late filing)
+GST Rate Determination
+Input Tax Credit (ITC) Query
+International GST or Cross-border Transactions Inquiry
+Tax Notice or Demand Related
+GST Refund Inquiry
+GST Audit or Inspection Query
+Other Specialized GST Matter
+Step 1: Extract Customer Profile Elements
+Identify the relevant customer details from their account that are directly related to the query:
+Age, gender, and nationality (if relevant to GST exemptions or schemes)
+GSTIN and registration type (e.g., regular, composition scheme)
+Business type, if applicable
+Key GST-related details (e.g., turnover, tax liabilities)
+Relevant GST filings (e.g., pending GSTR-1, GSTR-3B)
+Prior treatment of similar matters
+Step 2: Analyze the Query Context
+Restate the query clearly in GST-specific terminology.
+Identify the key tax issues raised in the query and how they relate to the customer&apos;s GST filing history.
+Recognize any patterns in previous filings that may influence the answer.
+Consider any recent amendments to GST law that could impact the situation.
+Step 3: Determine Applicable GST Provisions
+Identify the specific GST provisions, rules, notifications, or circulars that apply to the customer’s query:
+Statutory provisions that govern the subject matter (e.g., ITC eligibility, GST rate, etc.)
+Reference relevant GST sections or rules (e.g., GST Act Section 16 for ITC)
+Refer to CBIC (Central Board of Indirect Taxes and Customs) circulars or notifications for specific guidance.
+Step 4: Customer-Specific Considerations
+Address how the customer’s age, gender, or nationality (if relevant) influences the query, such as in cases of GST exemptions or special schemes.
+Evaluate how residential status impacts the matter (if relevant, especially for non-residents).
+Consider customer-specific deductions or claims in the context of GST compliance.
+Identify any prior treatments of similar issues in previous GST filings.
+Determine any changes in the customer’s circumstances that might affect the answer (e.g., change in turnover, business activity).
+Step 5: Implementation Guidance
+Provide clear guidance for the customer:
+Specify any required documentation (e.g., invoices, GST returns).
+Outline procedural steps for the customer to follow based on the query (e.g., filing, claiming ITC, registration).
+Highlight any GST forms (e.g., GSTR-1, GSTR-3B) the customer must file.
+Step 6: Actionable Recommendations
+Flag any compliance risks or issues the customer may face, such as missed returns, unclaimed ITC, or notices.
+Suggest best practices for resolving the query and ensuring future compliance.
+Offer recommendations for any potential GST optimization based on the customer&apos;s circumstances.
+Step 7: Concluding Summary
+Recap the key points of the answer.
+Reinforce the legal basis of the advice, citing relevant GST provisions.
+Provide the customer with actionable next steps, such as filing overdue returns, submitting documentation, or seeking further clarifications if needed.
+
+Example
+Customer Query:
+ &quot;Can I claim ITC on the air conditioning system purchased for our office building, even though it is used for employee comfort and not directly in production?&quot;
+Customer Profile:
+GSTIN: ABC123XYZ
+Regular taxpayer, not under the composition scheme
+Supplies consultancy and digital marketing services (SAC 998312 and 998315)
+Previous ITC claims on office rent and supplies
+Response:
+Query Restatement:
+The customer is inquiring whether they can claim Input Tax Credit (ITC) on air conditioning system expenses for their office building, even though the equipment is used primarily for employee comfort and not directly in business operations.
+Relevant GST Provisions:
+Under Section 17(5) of the CGST Act, ITC is not eligible for goods and services used for personal consumption or for employee welfare unless used directly in the course of taxable business activities (e.g., heating/cooling systems used in a manufacturing facility).
+ITC may apply if the equipment is necessary for providing taxable services (e.g., a restaurant or hotel offering air-conditioned premises).
+Customer-Specific Considerations:
+The customer’s business primarily offers consultancy and digital marketing services, where such equipment is unlikely to be directly linked to taxable business activities.
+Implementation Guidance:
+The customer should not claim ITC on the air conditioning system for the current purchase, as it is not directly tied to their business operations.
+Ensure invoices are reviewed to confirm that the air conditioning system is used only for business purposes if there is any mixed-use involved.
+Actionable Recommendations:
+Revisit previous ITC claims for any inconsistencies.
+Maintain clear documentation on the business use of office expenses to avoid compliance risks.
+Concluding Summary:
+ITC cannot be claimed on the air conditioning system under current GST provisions unless it is used directly for taxable business activities.
+Ensure compliance with GST rules for personal vs business use of office assets.
+{!$EinsteinSearch:File_GST_1Cx_rdd0b717e7e.results}
+</content>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>input_Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>input Text</masterLabel>
+            <referenceName>Input:input_Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_GST_1Cx_rdd0b717e7e</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:input_Text}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_GST_1Cx_rdd0b717e7e</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>GST_Filings__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.GST_Filings__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Investments__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Investments__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>GST_Deductions__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.GST_Deductions__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getDataForGrounding</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>recordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>RecordSnapshot:Account</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_2</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

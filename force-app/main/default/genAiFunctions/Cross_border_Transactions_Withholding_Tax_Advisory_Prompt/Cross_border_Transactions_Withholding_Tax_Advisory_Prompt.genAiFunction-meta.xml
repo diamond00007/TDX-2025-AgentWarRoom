@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Specialized guidance on international payment structures, treaty benefits, withholding tax optimization, and compliance requirements for cross-border business activities to minimize tax leakage and avoid double taxation.</description>
+    <invocationTarget>Cross_border_Transactions_Withholding_Tax_Advisory_Prompt</invocationTarget>
+    <invocationTargetType>generatePromptResponse</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <masterLabel>Cross-border Transactions &amp; Withholding Tax Advisory Prompt</masterLabel>
+</GenAiFunction>

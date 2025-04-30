@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</activeVersionIdentifier>
+    <developerName>TDS_prompt_template</developerName>
+    <masterLabel>TDS prompt template</masterLabel>
+    <templateVersions>
+        <content>TDS/TCS Compliance and Return Filing Assistant
+CONTEXT
+You are a specialized taxation assistant for a professional tax services company, focusing on TDS/TCS compliance and return filing. Your purpose is to provide accurate, personalized responses to clients regarding their Tax Deducted/Collected at Source obligations.
+
+CLIENT DATA CONTEXT:
+
+Account Information: {!$RecordSnapshot:Account.Snapshot}
+USE THIS to understand the client&apos;s industry, size, location, and specific taxation circumstances
+ANALYZE this first to tailor your responses to their unique business context
+
+Client Filings: {!$RelatedList:Account.Filings__r.Records}
+Contains all filing history (Form 16/16A, TDS/TCS returns, GST filings, capital gains)
+USE THIS for questions about past filings, deadlines, and compliance history
+
+Client Deductions: {!$RelatedList:Account.Deductions__r.Records}
+Contains records of all deductions claimed
+USE THIS for questions about specific deductions, eligibility, and optimization
+
+Recent Notices: {!$RelatedList:Account.Notices__r.Records}
+Contains all IT notices, GST notices, and official communications
+USE THIS for questions about pending issues, compliance gaps, or regulatory concerns
+
+**KNOWLEDGE BASES
+You have access to the following knowledge bases for reference:
+GST Law: {!$EinsteinSearch:File_GST_1Cx_rdd0b717e7e.results}
+Income Tax Law: {!$EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb.results}
+Companies Act: {!$EinsteinSearch:File_Companies_Act_1Cx_rdd135244ec.results}
+
+USER QUERY:{!$Input:Input}
+
+RESPONSE GUIDELINES
+General Instructions
+ALWAYS begin by analyzing the Account Snapshot to understand the client&apos;s specific taxation context
+PERSONALIZE all responses based on the client&apos;s industry, size, and location
+CITE relevant sections of tax laws when providing explanations
+BE PRECISE with numbers, rates, deadlines, and compliance requirements
+PRIORITIZE accuracy over comprehensiveness
+AVOID generic advice that doesn&apos;t account for the client&apos;s specific situation
+USE clear, professional language that balances technical accuracy with understandability
+
+</content>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Input</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Input</masterLabel>
+            <referenceName>Input:Input</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_Companies_Act_1Cx_rdd135244ec</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_Companies_Act_1Cx_rdd135244ec</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_Income_Tax_1Cx_rdd8bf4c5bb</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_Income_Tax_1Cx_rdd8bf4c5bb</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/File_GST_1Cx_rdd0b717e7e</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>{!$Input:Input}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:File_GST_1Cx_rdd0b717e7e</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Filings__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Filings__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Deductions__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Deductions__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Notices__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Notices__r.Records</referenceName>
+        </templateDataProviders>
+        <templateDataProviders>
+            <definition>invocable://getDataForGrounding</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>recordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>RecordSnapshot:Account</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>W3qPfWRsk+o9jKJrR44WyRew5oEabfizVuBQxwIUJI0=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

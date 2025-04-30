@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Comprehensive assistance with Goods and Services Tax compliance, including registration, rate determination, input tax credit optimization, return filing, and reconciliation to ensure complete adherence to GST regulations.</description>
+    <invocationTarget>GST_VAT_Compliance_and_Filing</invocationTarget>
+    <invocationTargetType>generatePromptResponse</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <masterLabel>GST/VAT Compliance and Filing</masterLabel>
+</GenAiFunction>

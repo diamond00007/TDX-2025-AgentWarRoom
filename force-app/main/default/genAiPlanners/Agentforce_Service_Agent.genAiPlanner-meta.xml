@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlanner xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Our Agent proactively recommends relevant Add-on Services tailored to each client&apos;s specific queries. By analyzing customer needs in real time, the Agent ensures personalized and value-driven suggestions. This approach enhances client satisfaction and drives additional revenue opportunities.</description>
+    <genAiFunctions>
+        <genAiFunctionName>EmployeeCopilot__AnswerQuestionsWithKnowledge</genAiFunctionName>
+    </genAiFunctions>
+    <genAiPlugins>
+        <genAiPluginName>Add_On_Services_Suggestion</genAiPluginName>
+    </genAiPlugins>
+    <masterLabel>Agentforce Service Agent</masterLabel>
+    <plannerType>AiCopilot__ReAct</plannerType>
+</GenAiPlanner>

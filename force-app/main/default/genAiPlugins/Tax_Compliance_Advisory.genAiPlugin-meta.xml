@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPlugin xmlns="http://soap.sforce.com/2006/04/metadata">
+    <canEscalate>false</canEscalate>
+    <description>This topic covers gathering and analyzing client information to provide precise advisory on tax compliance for businesses and individuals, company incorporation procedures, and Companies Act requirements. It includes client identification, entity classification, business structure analysis, and regulatory mapping to deliver tailored guidance on tax obligations, incorporation processes, and corporate governance responsibilities.</description>
+    <developerName>Tax_Compliance_Advisory</developerName>
+    <genAiFunctions>
+        <functionName>Get_Details_of_the_Customer</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Companies_Complaince_Prompt</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>IncomeTax_Service_Agent</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>GST_VAT_Compliance_and_Filing</functionName>
+    </genAiFunctions>
+    <genAiFunctions>
+        <functionName>Cross_border_Transactions_Withholding_Tax_Advisory_Prompt</functionName>
+    </genAiFunctions>
+    <genAiPluginInstructions>
+        <description>IF query contains terms like &quot;my income,&quot; &quot;salary,&quot; &quot;Form 16,&quot; &quot;individual,&quot; &quot;personal,&quot; &quot;80C,&quot; &quot;HRA,&quot; &quot;LTA,&quot; or discusses personal investments, housing loans, or medical insurance
+THEN route to Personal_Income_Tax_Action</description>
+        <developerName>instruction_ifquerycon0</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifquerycon0</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>IF query contains &quot;GST,&quot; &quot;input tax,&quot; &quot;ITC,&quot; &quot;GSTR,&quot; &quot;e-invoice,&quot; &quot;HSN,&quot; &quot;registration,&quot; &quot;composition scheme,&quot; or references to tax rates, invoice requirements, or return filing
+THEN route to GST_VAT_Compliance_Action</description>
+        <developerName>instruction_ifquerycon1</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifquerycon1</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>IF query contains &quot;foreign,&quot; &quot;overseas,&quot; &quot;international,&quot; &quot;cross-border,&quot; &quot;DTAA,&quot; &quot;treaty,&quot; &quot;withholding,&quot; &quot;remittance,&quot; &quot;royalty,&quot; &quot;FTS,&quot; &quot;PE,&quot; &quot;repatriation,&quot; &quot;FEMA,&quot; or &quot;RBI approval&quot;
+THEN route to Cross_Border_Transaction_Action</description>
+        <developerName>instruction_ifquerycon2</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifquerycon2</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>IF query contains &quot;merger,&quot; &quot;acquisition,&quot; &quot;demerger,&quot; &quot;restructuring,&quot; &quot;slump sale,&quot; &quot;business transfer,&quot; &quot;share transfer,&quot; &quot;capital gains,&quot; &quot;NCLT,&quot; &quot;scheme of arrangement,&quot; or discusses valuation impact
+THEN route to Business_Restructuring_Action</description>
+        <developerName>instruction_ifquerycon3</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifquerycon3</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>IF query is ambiguous or mentions multiple service areas
+THEN request clarification: &quot;Your query touches on multiple tax areas. Could you please specify whether you&apos;re asking about [list the 2-3 most likely services based on keywords]?&quot;</description>
+        <developerName>instruction_ifqueryisa4</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifqueryisa4</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>IF query mentions &quot;transportation,&quot; &quot;movement of goods,&quot; &quot;part A,&quot; &quot;part B,&quot; &quot;vehicle number,&quot; &quot;e-way bill,&quot; &quot;e-invoice,&quot; &quot;IRN,&quot; &quot;QR code,&quot; or &quot;IRP portal&quot;
+THEN route to Eway_Einvoice_Action</description>
+        <developerName>instruction_ifquerymen5</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_ifquerymen5</masterLabel>
+    </genAiPluginInstructions>
+    <genAiPluginInstructions>
+        <description>When a user initates the conversation regarding Taxation ask him email to verify if he is a existing Contact or person account with in Salesforce and address the Customer based on the name of the account</description>
+        <developerName>instruction_whenauseri6</developerName>
+        <language>en_US</language>
+        <masterLabel>instruction_whenauseri6</masterLabel>
+    </genAiPluginInstructions>
+    <language>en_US</language>
+    <masterLabel>Tax Compliance Advisory</masterLabel>
+    <pluginType>Topic</pluginType>
+    <scope>Provides Users/Company information on tax compliance for businesses and individuals, company incorporation, and Companies Act requirements. Includes tax planning, filing assistance, regulatory compliance guidance, incorporation procedures, corporate governance, and statutory reporting requirements across all business entity types and individual tax situations.</scope>
+</GenAiPlugin>

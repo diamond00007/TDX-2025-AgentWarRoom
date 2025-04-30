@@ -1,0 +1,31 @@
+{
+  "required" : [ "Input:Input_text", "Input:Account" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Input:Input_text" : {
+      "title" : "Input text",
+      "description" : "Extract corporate compliance queries from user input, focusing on identifying specific business restructuring needs (company formation, mergers, splits, conversions) or regulatory requirements without requesting basic company information as this is already established in the account.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : true
+    },
+    "Input:Account" : {
+      "title" : "Account",
+      "description" : "Take the accountId from get details of the customer agent\nif not ask the customer to provide details of the account",
+      "lightning:type" : "lightning__recordInfoType",
+      "lightning:sObjectInfo" : {
+        "apiName" : "Account"
+      },
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    },
+    "citationMode" : {
+      "title" : "Citation Mode",
+      "description" : "Select Citation Mode",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
