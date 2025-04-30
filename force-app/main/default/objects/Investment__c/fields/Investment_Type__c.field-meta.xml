@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Investment_Type__c</fullName>
+    <label>Investment Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Value1</fullName>
+                <default>false</default>
+                <label>Value1</label>
+            </value>
+            <value>
+                <fullName>Public Provident Fund (PPF)</fullName>
+                <default>false</default>
+                <label>Public Provident Fund (PPF)</label>
+            </value>
+            <value>
+                <fullName>Employee Provident Fund (EPF)</fullName>
+                <default>false</default>
+                <label>Employee Provident Fund (EPF)</label>
+            </value>
+            <value>
+                <fullName>National Pension System (NPS)</fullName>
+                <default>false</default>
+                <label>National Pension System (NPS)</label>
+            </value>
+            <value>
+                <fullName>Equity Linked Saving Scheme (ELSS)</fullName>
+                <default>false</default>
+                <label>Equity Linked Saving Scheme (ELSS)</label>
+            </value>
+            <value>
+                <fullName>Life Insurance Premium</fullName>
+                <default>false</default>
+                <label>Life Insurance Premium</label>
+            </value>
+            <value>
+                <fullName>Health Insurance Premium (Section 80D)</fullName>
+                <default>false</default>
+                <label>Health Insurance Premium (Section 80D)</label>
+            </value>
+            <value>
+                <fullName>Tax Saver Fixed Deposit (5 years)</fullName>
+                <default>false</default>
+                <label>Tax Saver Fixed Deposit (5 years)</label>
+            </value>
+            <value>
+                <fullName>National Savings Certificate (NSC)</fullName>
+                <default>false</default>
+                <label>National Savings Certificate (NSC)</label>
+            </value>
+            <value>
+                <fullName>Senior Citizens Savings Scheme (SCSS)</fullName>
+                <default>false</default>
+                <label>Senior Citizens Savings Scheme (SCSS)</label>
+            </value>
+            <value>
+                <fullName>Sukanya Samriddhi Yojana</fullName>
+                <default>false</default>
+                <label>Sukanya Samriddhi Yojana</label>
+            </value>
+            <value>
+                <fullName>Home Loan Principal Repayment</fullName>
+                <default>false</default>
+                <label>Home Loan Principal Repayment</label>
+            </value>
+            <value>
+                <fullName>Home Loan Interest (Section 24)</fullName>
+                <default>false</default>
+                <label>Home Loan Interest (Section 24)</label>
+            </value>
+            <value>
+                <fullName>Education Loan Interest (Section 80E)</fullName>
+                <default>false</default>
+                <label>Education Loan Interest (Section 80E)</label>
+            </value>
+            <value>
+                <fullName>Tuition Fees for Children</fullName>
+                <default>false</default>
+                <label>Tuition Fees for Children</label>
+            </value>
+            <value>
+                <fullName>Infrastructure Bonds</fullName>
+                <default>false</default>
+                <label>Infrastructure Bonds</label>
+            </value>
+            <value>
+                <fullName>Mutual Funds (Non-ELSS)</fullName>
+                <default>false</default>
+                <label>Mutual Funds (Non-ELSS)</label>
+            </value>
+            <value>
+                <fullName>Stock Market Investments</fullName>
+                <default>false</default>
+                <label>Stock Market Investments</label>
+            </value>
+            <value>
+                <fullName>Real Estate</fullName>
+                <default>false</default>
+                <label>Real Estate</label>
+            </value>
+            <value>
+                <fullName>Gold Bonds / ETFs</fullName>
+                <default>false</default>
+                <label>Gold Bonds / ETFs</label>
+            </value>
+            <value>
+                <fullName>Unit Linked Insurance Plan (ULIP)</fullName>
+                <default>false</default>
+                <label>Unit Linked Insurance Plan (ULIP)</label>
+            </value>
+            <value>
+                <fullName>Other Section 80C Investments</fullName>
+                <default>false</default>
+                <label>Other Section 80C Investments</label>
+            </value>
+            <value>
+                <fullName>Voluntary Retirement Scheme (VRS)</fullName>
+                <default>false</default>
+                <label>Voluntary Retirement Scheme (VRS)</label>
+            </value>
+            <value>
+                <fullName>Gratuity</fullName>
+                <default>false</default>
+                <label>Gratuity</label>
+            </value>
+            <value>
+                <fullName>Fixed Deposits (Non-Tax Saver)</fullName>
+                <default>false</default>
+                <label>Fixed Deposits (Non-Tax Saver)</label>
+            </value>
+            <value>
+                <fullName>Other (Specify)</fullName>
+                <default>false</default>
+                <label>Other (Specify)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

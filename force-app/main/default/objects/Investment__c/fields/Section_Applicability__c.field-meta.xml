@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Section_Applicability__c</fullName>
+    <label>Section Applicability</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ection 80C</fullName>
+                <default>false</default>
+                <label>Section 80C</label>
+            </value>
+            <value>
+                <fullName>Section 80D</fullName>
+                <default>false</default>
+                <label>Section 80D</label>
+            </value>
+            <value>
+                <fullName>Section 80E</fullName>
+                <default>false</default>
+                <label>Section 80E</label>
+            </value>
+            <value>
+                <fullName>Section 80G</fullName>
+                <default>false</default>
+                <label>Section 80G</label>
+            </value>
+            <value>
+                <fullName>Section 80GGA</fullName>
+                <default>false</default>
+                <label>Section 80GGA</label>
+            </value>
+            <value>
+                <fullName>Section 80GG</fullName>
+                <default>false</default>
+                <label>Section 80GG</label>
+            </value>
+            <value>
+                <fullName>Section 80TTA</fullName>
+                <default>false</default>
+                <label>Section 80TTA</label>
+            </value>
+            <value>
+                <fullName>Section 80TTB</fullName>
+                <default>false</default>
+                <label>Section 80TTB</label>
+            </value>
+            <value>
+                <fullName>Section 24(b)</fullName>
+                <default>false</default>
+                <label>Section 24(b)</label>
+            </value>
+            <value>
+                <fullName>Section 54</fullName>
+                <default>false</default>
+                <label>Section 54</label>
+            </value>
+            <value>
+                <fullName>Section 54EC</fullName>
+                <default>false</default>
+                <label>Section 54EC</label>
+            </value>
+            <value>
+                <fullName>Section 54F</fullName>
+                <default>false</default>
+                <label>Section 54F</label>
+            </value>
+            <value>
+                <fullName>Section 10(10D)</fullName>
+                <default>false</default>
+                <label>Section 10(10D)</label>
+            </value>
+            <value>
+                <fullName>Section 10(38)</fullName>
+                <default>false</default>
+                <label>Section 10(38)</label>
+            </value>
+            <value>
+                <fullName>Section 80U</fullName>
+                <default>false</default>
+                <label>Section 80U</label>
+            </value>
+            <value>
+                <fullName>Section 10(10CC)</fullName>
+                <default>false</default>
+                <label>Section 10(10CC)</label>
+            </value>
+            <value>
+                <fullName>Section 10(12)</fullName>
+                <default>false</default>
+                <label>Section 10(12)</label>
+            </value>
+            <value>
+                <fullName>Section 80CCG</fullName>
+                <default>false</default>
+                <label>Section 80CCG</label>
+            </value>
+            <value>
+                <fullName>Section 10(5)</fullName>
+                <default>false</default>
+                <label>Section 10(5)</label>
+            </value>
+            <value>
+                <fullName>Section 10(15)</fullName>
+                <default>false</default>
+                <label>Section 10(15)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

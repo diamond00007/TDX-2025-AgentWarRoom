@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Resonse_Status__c</fullName>
+    <label>Resonse Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Acknowledged</fullName>
+                <default>false</default>
+                <label>Acknowledged</label>
+            </value>
+            <value>
+                <fullName>Under Review</fullName>
+                <default>false</default>
+                <label>Under Review</label>
+            </value>
+            <value>
+                <fullName>Resolved</fullName>
+                <default>false</default>
+                <label>Resolved</label>
+            </value>
+            <value>
+                <fullName>Pending</fullName>
+                <default>false</default>
+                <label>Pending</label>
+            </value>
+            <value>
+                <fullName>Disputed</fullName>
+                <default>false</default>
+                <label>Disputed</label>
+            </value>
+            <value>
+                <fullName>Clarification Requested</fullName>
+                <default>false</default>
+                <label>Clarification Requested</label>
+            </value>
+            <value>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+                <label>Accepted</label>
+            </value>
+            <value>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+                <label>Rejected</label>
+            </value>
+            <value>
+                <fullName>Appealed</fullName>
+                <default>false</default>
+                <label>Appealed</label>
+            </value>
+            <value>
+                <fullName>Closed</fullName>
+                <default>false</default>
+                <label>Closed</label>
+            </value>
+            <value>
+                <fullName>Escalated</fullName>
+                <default>false</default>
+                <label>Escalated</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>No Action Required</fullName>
+                <default>false</default>
+                <label>No Action Required</label>
+            </value>
+            <value>
+                <fullName>Response Pending</fullName>
+                <default>false</default>
+                <label>Response Pending</label>
+            </value>
+            <value>
+                <fullName>Final Decision Issued</fullName>
+                <default>false</default>
+                <label>Final Decision Issued</label>
+            </value>
+            <value>
+                <fullName>Follow-up Required</fullName>
+                <default>false</default>
+                <label>Follow-up Required</label>
+            </value>
+            <value>
+                <fullName>Compromise Agreement</fullName>
+                <default>false</default>
+                <label>Compromise Agreement</label>
+            </value>
+            <value>
+                <fullName>Settlement in Process</fullName>
+                <default>false</default>
+                <label>Settlement in Process</label>
+            </value>
+            <value>
+                <fullName>Amendment Proposed</fullName>
+                <default>false</default>
+                <label>Amendment Proposed</label>
+            </value>
+            <value>
+                <fullName>Further Documentation Needed</fullName>
+                <default>false</default>
+                <label>Further Documentation Needed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

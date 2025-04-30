@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Notice_Category__c</fullName>
+    <label>Notice Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Income Tax Notice</fullName>
+                <default>false</default>
+                <label>Income Tax Notice</label>
+            </value>
+            <value>
+                <fullName>GST Notice</fullName>
+                <default>false</default>
+                <label>GST Notice</label>
+            </value>
+            <value>
+                <fullName>Audit Notice</fullName>
+                <default>false</default>
+                <label>Audit Notice</label>
+            </value>
+            <value>
+                <fullName>Legal Notice</fullName>
+                <default>false</default>
+                <label>Legal Notice</label>
+            </value>
+            <value>
+                <fullName>Compliance Notice</fullName>
+                <default>false</default>
+                <label>Compliance Notice</label>
+            </value>
+            <value>
+                <fullName>Tax Demand Notice</fullName>
+                <default>false</default>
+                <label>Tax Demand Notice</label>
+            </value>
+            <value>
+                <fullName>Penalty Notice</fullName>
+                <default>false</default>
+                <label>Penalty Notice</label>
+            </value>
+            <value>
+                <fullName>Tax Assessment Notice</fullName>
+                <default>false</default>
+                <label>Tax Assessment Notice</label>
+            </value>
+            <value>
+                <fullName>Customs Notice</fullName>
+                <default>false</default>
+                <label>Customs Notice</label>
+            </value>
+            <value>
+                <fullName>RBI Notice</fullName>
+                <default>false</default>
+                <label>RBI Notice</label>
+            </value>
+            <value>
+                <fullName>FEMA Notice</fullName>
+                <default>false</default>
+                <label>FEMA Notice</label>
+            </value>
+            <value>
+                <fullName>ESI/PF Notice</fullName>
+                <default>false</default>
+                <label>ESI/PF Notice</label>
+            </value>
+            <value>
+                <fullName>Notice of Appeal</fullName>
+                <default>false</default>
+                <label>Notice of Appeal</label>
+            </value>
+            <value>
+                <fullName>Court Notice</fullName>
+                <default>false</default>
+                <label>Court Notice</label>
+            </value>
+            <value>
+                <fullName>Regulatory Compliance Notice</fullName>
+                <default>false</default>
+                <label>Regulatory Compliance Notice</label>
+            </value>
+            <value>
+                <fullName>Notice of Objection</fullName>
+                <default>false</default>
+                <label>Notice of Objection</label>
+            </value>
+            <value>
+                <fullName>Show Cause Notice</fullName>
+                <default>false</default>
+                <label>Show Cause Notice</label>
+            </value>
+            <value>
+                <fullName>Penal Action Notice</fullName>
+                <default>false</default>
+                <label>Penal Action Notice</label>
+            </value>
+            <value>
+                <fullName>TDS Notice</fullName>
+                <default>false</default>
+                <label>TDS Notice</label>
+            </value>
+            <value>
+                <fullName>Refund or Adjustment Notice</fullName>
+                <default>false</default>
+                <label>Refund or Adjustment Notice</label>
+            </value>
+            <value>
+                <fullName>Employee Notice</fullName>
+                <default>false</default>
+                <label>Employee Notice</label>
+            </value>
+            <value>
+                <fullName>Withholding Tax Notice</fullName>
+                <default>false</default>
+                <label>Withholding Tax Notice</label>
+            </value>
+            <value>
+                <fullName>Securities Notice</fullName>
+                <default>false</default>
+                <label>Securities Notice</label>
+            </value>
+            <value>
+                <fullName>Environmental Compliance Notice</fullName>
+                <default>false</default>
+                <label>Environmental Compliance Notice</label>
+            </value>
+            <value>
+                <fullName>Other (Specify)</fullName>
+                <default>false</default>
+                <label>Other (Specify)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

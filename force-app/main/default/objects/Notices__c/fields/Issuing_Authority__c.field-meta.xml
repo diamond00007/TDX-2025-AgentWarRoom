@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issuing_Authority__c</fullName>
+    <label>Issuing Authority</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Income Tax Department</fullName>
+                <default>false</default>
+                <label>Income Tax Department</label>
+            </value>
+            <value>
+                <fullName>GST Department</fullName>
+                <default>false</default>
+                <label>GST Department</label>
+            </value>
+            <value>
+                <fullName>Central Board of Direct Taxes (CBDT)</fullName>
+                <default>false</default>
+                <label>Central Board of Direct Taxes (CBDT)</label>
+            </value>
+            <value>
+                <fullName>Central Board of Indirect Taxes and Customs (CBIC)</fullName>
+                <default>false</default>
+                <label>Central Board of Indirect Taxes and Customs (CBIC)</label>
+            </value>
+            <value>
+                <fullName>Reserve Bank of India (RBI)</fullName>
+                <default>false</default>
+                <label>Reserve Bank of India (RBI)</label>
+            </value>
+            <value>
+                <fullName>Securities and Exchange Board of India (SEBI)</fullName>
+                <default>false</default>
+                <label>Securities and Exchange Board of India (SEBI)</label>
+            </value>
+            <value>
+                <fullName>Customs Department</fullName>
+                <default>false</default>
+                <label>Customs Department</label>
+            </value>
+            <value>
+                <fullName>Ministry of Corporate Affairs (MCA)</fullName>
+                <default>false</default>
+                <label>Ministry of Corporate Affairs (MCA)</label>
+            </value>
+            <value>
+                <fullName>Local Tax Authority</fullName>
+                <default>false</default>
+                <label>Local Tax Authority</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

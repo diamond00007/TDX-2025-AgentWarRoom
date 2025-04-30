@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deduction_Type__c</fullName>
+    <label>Deduction Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TDS on Salary</fullName>
+                <default>false</default>
+                <label>TDS on Salary</label>
+            </value>
+            <value>
+                <fullName>TDS on Contractor Payment</fullName>
+                <default>false</default>
+                <label>TDS on Contractor Payment</label>
+            </value>
+            <value>
+                <fullName>TDS on Rent</fullName>
+                <default>false</default>
+                <label>TDS on Rent</label>
+            </value>
+            <value>
+                <fullName>TDS on Professional Fees</fullName>
+                <default>false</default>
+                <label>TDS on Professional Fees</label>
+            </value>
+            <value>
+                <fullName>TDS on Interest (194A)</fullName>
+                <default>false</default>
+                <label>TDS on Interest (194A)</label>
+            </value>
+            <value>
+                <fullName>TDS on Commission/Brokerage</fullName>
+                <default>false</default>
+                <label>TDS on Commission/Brokerage</label>
+            </value>
+            <value>
+                <fullName>TDS on Purchase of Property</fullName>
+                <default>false</default>
+                <label>TDS on Purchase of Property</label>
+            </value>
+            <value>
+                <fullName>TDS on Dividend (194)</fullName>
+                <default>false</default>
+                <label>TDS on Dividend (194)</label>
+            </value>
+            <value>
+                <fullName>TDS on Royalty/FTS (194J)</fullName>
+                <default>false</default>
+                <label>TDS on Royalty/FTS (194J)</label>
+            </value>
+            <value>
+                <fullName>TDS on Technical Services</fullName>
+                <default>false</default>
+                <label>TDS on Technical Services</label>
+            </value>
+            <value>
+                <fullName>TDS on Foreign Remittance (195)</fullName>
+                <default>false</default>
+                <label>TDS on Foreign Remittance (195)</label>
+            </value>
+            <value>
+                <fullName>GST Deduction at Source (TDS)</fullName>
+                <default>false</default>
+                <label>GST Deduction at Source (TDS)</label>
+            </value>
+            <value>
+                <fullName>Provident Fund (PF) Deduction</fullName>
+                <default>false</default>
+                <label>Provident Fund (PF) Deduction</label>
+            </value>
+            <value>
+                <fullName>Professional Tax</fullName>
+                <default>false</default>
+                <label>Professional Tax</label>
+            </value>
+            <value>
+                <fullName>Employee State Insurance (ESI)</fullName>
+                <default>false</default>
+                <label>Employee State Insurance (ESI)</label>
+            </value>
+            <value>
+                <fullName>Advance Tax</fullName>
+                <default>false</default>
+                <label>Advance Tax</label>
+            </value>
+            <value>
+                <fullName>Self-Assessment Tax</fullName>
+                <default>false</default>
+                <label>Self-Assessment Tax</label>
+            </value>
+            <value>
+                <fullName>Equalization Levy</fullName>
+                <default>false</default>
+                <label>Equalization Levy</label>
+            </value>
+            <value>
+                <fullName>Custom Duty Deduction</fullName>
+                <default>false</default>
+                <label>Custom Duty Deduction</label>
+            </value>
+            <value>
+                <fullName>Income Tax Deducted</fullName>
+                <default>false</default>
+                <label>Income Tax Deducted</label>
+            </value>
+            <value>
+                <fullName>Surcharge &amp; Cess</fullName>
+                <default>false</default>
+                <label>Surcharge &amp; Cess</label>
+            </value>
+            <value>
+                <fullName>Other Statutory Deduction</fullName>
+                <default>false</default>
+                <label>Other Statutory Deduction</label>
+            </value>
+            <value>
+                <fullName>Non-Tax Deduction</fullName>
+                <default>false</default>
+                <label>Non-Tax Deduction</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
